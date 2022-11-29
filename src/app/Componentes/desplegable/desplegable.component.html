@@ -1,0 +1,12 @@
+<form [formGroup]="formulario" (ngSubmit)="enviar()" *ngIf="pulsado==false" >
+    <Label>Elige asigntura:</Label>
+    <div class="dropdown">
+        <select formControlName="asignatura" >
+    
+          <option *ngFor=" let asignaturas of listaAsignaturas" class="dropdown-item">{{asignaturas}} </option>
+      
+        
+        </select>
+      </div>
+      <button class="btn btn-primary"  type="submit" [disabled]="!formulario.valid">Empezar</button>
+    </form>

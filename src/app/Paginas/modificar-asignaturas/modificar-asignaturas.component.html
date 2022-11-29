@@ -1,0 +1,12 @@
+<h2>Modifica asignaturas</h2>
+<div *ngIf="listaAsignaturas.length>0">
+<div *ngFor=" let asignatura of listaAsignaturas; let i = index">
+    
+     <input type="text"  class="form-control" id={{asignatura}} [ngModel]=asignatura > 
+     <button type="button" class="btn btn-outline-danger" (click)="eliminar(i)">Eliminar </button><br><br>
+        
+
+</div>
+<div ><button   class="btn btn-primary" (click)="guardarCambios()"  >Guardar cambios</button></div>
+
+</div>

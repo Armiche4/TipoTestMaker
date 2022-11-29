@@ -1,0 +1,84 @@
+<div class="contenedorprincipal">
+<div>
+  <h2>Añadir preguntas</h2>
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+
+    <div class="form-group">
+
+      <div class="dropdown">
+        <select  formControlName="asignatura"   >
+
+          <option *ngFor=" let asignatura of listaAsignaturas" class="dropdown-item">{{asignatura}} </option>
+      
+        
+        </select>
+      </div>
+
+    <label  for="name">Enunciado:</label>
+
+
+    <input type="text" name="enunciado" class="form-control" formControlName="enunciado"    > 
+
+ 
+      <div *ngIf="formulario.controls['enunciado'].touched && formulario.controls['enunciado'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber un enunciado</small> 
+      </div>
+</div>
+<div class="form-group">
+    <label  for="name">Respuesta 1:</label>
+
+
+    <input type="text" name="enunciado" class="form-control" formControlName="respuesta1"    > 
+    <input type="radio" class="form-check-input" name="correcta" value="1" formControlName="correcta" >
+    <label for="correcta" class="form-check-label">Correcta</label>
+ 
+      <div *ngIf="formulario.controls['respuesta1'].touched && formulario.controls['respuesta1'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber una respuesta</small> 
+      </div>
+</div>
+<div class="form-group">
+    <label  for="name">Respuesta 2:</label>
+
+
+    <input type="text" name="enunciado" class="form-control" formControlName="respuesta2"    > 
+    <input type="radio" class="form-check-input"  name="correcta" value="2" formControlName="correcta" >
+    <label for="correcta" class="form-check-label">Correcta</label>
+ 
+      <div *ngIf="formulario.controls['respuesta2'].touched && formulario.controls['respuesta2'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber una respuesta</small> 
+      </div>
+</div>
+<div class="form-group">
+    <label  for="name">Respuesta 3:</label>
+
+
+    <input type="text" name="enunciado" class="form-control" formControlName="respuesta3"    > 
+    <input type="radio" class="form-check-input"  name="correcta" value="3" formControlName="correcta" >
+    <label for="correcta" class="form-check-label">Correcta</label>
+ 
+      <div *ngIf="formulario.controls['respuesta3'].touched && formulario.controls['respuesta3'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber una respuesta</small> 
+      </div>
+</div>
+<div class="form-group">
+    <label  for="name">Respuesta 4:</label>
+
+
+    <input type="text" name="enunciado" class="form-control" formControlName="respuesta4"    > 
+    <input type="radio"  class="form-check-input" name="correcta" value="4" formControlName="correcta" >
+    <label for="correcta" class="form-check-label">Correcta</label>
+ 
+      <div *ngIf="formulario.controls['respuesta4'].touched && formulario.controls['respuesta4'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber una respuesta</small> 
+      </div>
+</div>
+<br>
+
+<button class="btn btn-primary"  type="submit" [disabled]="!formulario.valid">Añadir</button>
+</form>
+</div>
+<div>
+<h2>Añadir asignaturas</h2>
+<app-anadir-asignaturas></app-anadir-asignaturas>
+</div>
+</div>

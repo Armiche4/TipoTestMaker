@@ -1,0 +1,17 @@
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+
+    <div class="form-group">
+    <label  for="name">Nombre de la asignatura:</label>
+
+
+    <input type="text" name="nombre" class="form-control" formControlName="nombre"    > 
+
+ 
+      <div *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].hasError('required')">
+        <small class="form-text text-muted">Tiene que haber un nombre</small> 
+      </div>
+</div>
+
+
+<button class="btn btn-primary"  type="submit" [disabled]="!formulario.valid">Añadir</button>
+</form>

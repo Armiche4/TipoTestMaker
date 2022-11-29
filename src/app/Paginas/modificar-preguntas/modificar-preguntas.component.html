@@ -1,0 +1,52 @@
+<div class="contenedorprincipal">
+  <div class="modificarPreguntas">
+    <h2>Modifica preguntas</h2>
+<form [formGroup]="formulario" (ngSubmit)="enviar()" >
+    <Label>Elige asigntura:</Label>
+    <div class="dropdown">
+        <select formControlName="asignatura" >
+    
+          <option *ngFor=" let asignaturas of listaAsignaturas" class="dropdown-item">{{asignaturas}} </option>
+      
+        
+        </select>
+      </div>
+      <button class="btn btn-primary"  type="submit" [disabled]="!formulario.valid">Mostrar</button>
+    </form>
+
+
+    <div *ngIf="listaPreguntas.length>0">
+      
+        <div *ngFor=" let pregunta of listaPreguntas; let i = index">
+       <label for=""> Enunciado</label><br>
+        <input type="text" name="enunciado" class="form-control"[(ngModel)]="listaPreguntas[i].enunciado"   > <br>  
+        <label for=""> Respuestas</label><br>
+        <input type="text" name="enunciado" class="form-control" [(ngModel)]="listaPreguntas[i].respuesta1"  >  <input type="radio" class="form-check-input" name={{i}} value="1" [checked]=" pregunta.correcta==1" (change)="cambiarRespuestaCorrecta($event.target)"><br> 
+        <input type="text" name="enunciado" class="form-control" [(ngModel)]="listaPreguntas[i].respuesta2"    >  <input type="radio" class="form-check-input" name={{i}} value="2" [checked]="pregunta.correcta==2" (change)="cambiarRespuestaCorrecta($event.target)"><br> 
+      
+
+        <input type="text" name="enunciado" class="form-control"[(ngModel)]="listaPreguntas[i].respuesta3"   >  <input type="radio" class="form-check-input" name={{i}} value="3" [checked]="pregunta.correcta==3" (change)="cambiarRespuestaCorrecta($event.target)"><br> 
+        <input type="text" name="enunciado" class="form-control" [(ngModel)]="listaPreguntas[i].respuesta4"  >   <input type="radio" class="form-check-input" name={{i}} value="4" [checked]="pregunta.correcta==4" (change)="cambiarRespuestaCorrecta($event.target)"><br> 
+
+  
+        <button type="button" class="btn btn-outline-danger" (click)="eliminar(i)">Eliminar pregunta</button>
+        
+        </div>
+        
+        </div>
+        
+        <div *ngIf="listaPreguntas.length>0"><button   class="btn btn-primary" (click)="guardarCambios()"  >Guardar cambios</button></div>
+        
+       
+        
+        
+        
+        
+        <div *ngIf="noHayPreguntas==true">
+        <h3>No hay preguntas en {{asignatura}}</h3>
+        <p>Vete a  <a href="AnadirPreguntas"> añadir preguntas</a> para empezar</p>
+        </div>
+      </div>
+
+      <app-modificar-asignaturas></app-modificar-asignaturas>
+    </div>
